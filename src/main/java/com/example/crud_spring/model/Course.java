@@ -15,6 +15,9 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // camada de dominio
 @Data
 @Entity
@@ -50,5 +53,7 @@ public class Course {
         @Convert(converter = StatusConverter.class)
         private Status status = Status.ACTIVE;
 
-
+        @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course")
+//        @JoinColumn(name = "course_id")
+        private List<Lesson> lessons = new ArrayList<>();
 }
