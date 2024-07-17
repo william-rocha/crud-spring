@@ -3,11 +3,8 @@ package com.example.crud_spring.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-// gettes e setters
-@Data
 public class CourseDtoDefault {
 
     private Long id;
