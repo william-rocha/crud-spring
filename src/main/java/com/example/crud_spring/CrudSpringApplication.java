@@ -20,27 +20,30 @@ public class CrudSpringApplication {
 	@Bean
 	CommandLineRunner initDatabase(CourseRepository courseRepository) {
 		return args -> {
-//			função lambda do proprio java
-
 			courseRepository.deleteAll();
 
-			Course c = new Course();
-			c.setName("Spring");
-			c.setCategory(Category.FRONT_END);
+			for(int i = 0; i < 20; i++) {
+				Course c = new Course();
+				c.setName("Spring" + i);
+				c.setCategory(Category.FRONT_END);
 
-			Lesson l = new Lesson();
-			l.setName("Introdução");
-			l.setYoutubeUrl("https://www.youtube.com");
-			l.setCourse(c);
-			c.getLessons().add(l);
+				Lesson l = new Lesson();
+				l.setName("Introdução");
+				l.setYoutubeUrl("https://www.youtube.com");
+				l.setCourse(c);
+				c.getLessons().add(l);
 
-			Lesson l1 = new Lesson();
-			l1.setName("Angular");
-			l1.setYoutubeUrl("https://www.youtube.com");
-			l1.setCourse(c);
-			c.getLessons().add(l1);
+				Lesson l1 = new Lesson();
+				l1.setName("Angular");
+				l1.setYoutubeUrl("https://www.youtube.com");
+				l1.setCourse(c);
+				c.getLessons().add(l1);
 
-			courseRepository.save(c);
+				courseRepository.save(c);
+			}
+
+
+
 		};
 	}
 }
