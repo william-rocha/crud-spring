@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// para @NotNull @Positive
 
 @RestController
 @RequestMapping("api/courses")
@@ -43,17 +42,11 @@ public class CourseController {
     public CourseDTO update(@PathVariable @NotNull @Positive Long id,
                             @RequestBody @Valid @NotNull CourseDTO course) {
         return courseService.update(id, course);
-//                .map(recordFound -> ResponseEntity.ok().body(recordFound))
-//                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable @NotNull @Positive Long id) {
         courseService.delete(id);
-//        if (courseService.delete(id)) {
-//            return ResponseEntity.noContent().<Void>build();
-//        }
-//        return ResponseEntity.notFound().build();
     }
 }

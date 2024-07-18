@@ -47,10 +47,9 @@ public class CourseService {
                     Course course = courseMapper.toEntity(courseDTO);
             recordFound.setName(courseDTO.name());
             recordFound.setCategory(this.courseMapper.converteCategory(courseDTO.category()));
-//            recordFound.setLessons(course.getLessons());
-                    recordFound.getLessons().clear();
-                    course.getLessons().forEach(recordFound.getLessons()::add);
-//                    course.getLessons().forEach(lesson -> recordFound.getLessons().add(lesson));
+            recordFound.getLessons().clear();
+            course.getLessons().forEach(recordFound.getLessons()::add);
+
             return courseMapper.toDTO(courseRepository.save(recordFound));
         }).orElseThrow(() -> new RecordNotFoundException(id));
     }

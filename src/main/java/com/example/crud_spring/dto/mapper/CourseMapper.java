@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.example.crud_spring.enums.Category.FRONT_END;
+
 @Component
 public class CourseMapper {
 
@@ -58,8 +60,8 @@ public class CourseMapper {
             return null;
         }
       return  switch (value) {
-            case "Front-end" -> Category.FRONT_END;
-            case "Back-end" -> Category.BACK_END;
+            case "front-end" -> FRONT_END;
+            case "back-end" -> Category.BACK_END;
             default -> throw new IllegalArgumentException("Categoria invalida " + value);
         };
     }

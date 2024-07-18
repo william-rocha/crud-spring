@@ -30,19 +30,13 @@ public class Course {
         @JsonProperty("_id")
         private Long id;
 
-
-
-        //        como no banco foi 100
         @NotBlank
         @NotNull
         @Length(min = 5, max = 30)
         @Column(length = 100, nullable = false)
         private String name;
 
-
-
         @NotNull
-//        @Length(max = 30)
         @Column(nullable = false)
         @Convert(converter = CategoryConverter.class)
         private Category category;
