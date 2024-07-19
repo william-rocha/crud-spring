@@ -20,13 +20,12 @@ import java.util.List;
 
 // camada de dominio
 @Entity
-//@table(name = "cursos")
-@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
+@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id =?")
 @SQLRestriction("status = 'Ativo'")
 public class Course {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @JsonProperty("_id")
         private Long id;
 
@@ -50,6 +49,7 @@ public class Course {
         @NotEmpty
         @Valid
         @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course")
+        @OrderBy("id")
         private List<Lesson> lessons = new ArrayList<>();
 
         public Long getId() {

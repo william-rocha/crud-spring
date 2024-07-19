@@ -11,10 +11,9 @@ import org.hibernate.validator.constraints.Length;
 public class Lesson {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("_id")
     private Long id;
-
 
     @NotBlank
     @NotNull
@@ -27,8 +26,6 @@ public class Lesson {
     @Length(min = 5, max = 100)
     @Column(length = 40, nullable = false)
     private String youtubeUrl;
-
-
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
